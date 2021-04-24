@@ -58,3 +58,8 @@ recursivePrintTree("",contentParse)
 
 parsedNote = parseNote('./sample-notes/Just Text.enex')
 parsedNote.printBasicStats()
+parsedNote.exportToLatex()
+
+parsedNote = parseNote('./sample-notes/Multi Section.enex')
+parsedNote.printBasicStats()
+parsedNote.exportToLatex()
