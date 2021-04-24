@@ -7,6 +7,7 @@ class LatexDoc:
     filePath = ""
 
     endedText = True
+    replacement = True
 
     def __init__(self, title, author):
         self.documentClass = "article"
@@ -14,6 +15,8 @@ class LatexDoc:
         self.author = author
         self.filePath = "./output-doc/"+title+".tex"
         self.documentText = ""
+        self.replacement = True
+        self.inCodeBlock = False
 
     def addSection(self, sectionTitle):
         self.documentText += r"\section{"+sectionTitle+"}\n"
@@ -26,8 +29,26 @@ class LatexDoc:
 
     def addText(self, text):
         if(text!=None):
-            self.documentText += text.replace(u'\xa0', u' ')
+            if(self.replacement == True and not self.inCodeBlock):
+                text = text.replace('$', r'\$ ')
+                text = text.replace('%', r'\% ')
+                text = text.replace('_', r'\_ ')
+                text = text.replace('}', r'\} ')
+                text = text.replace('{', r'\{ ')
+                text = text.replace('&', r'\& ')
+                text = text.replace('#', r'\# ')
+                text = text.replace('\\', r'\textbackslash ')
+                text = text.replace('~', r'\textasciitilde ')
+
+            text = text.replace(u'\xa0', ' ')
+            self.documentText += text
             self.endedText = False
+
+    def turnOnReplacement(self):
+        self.replacement = True
+
+    def turnOffReplacement(self):
+        self.replacement = False
 
     def endText(self):
         if(self.endedText == False):
@@ -48,9 +69,11 @@ class LatexDoc:
 
     def startCodeBlock(self):
         self.documentText += r"\begin{verbatim}" + "\n"
+        self.inCodeBlock = True
 
     def endCodeBlock(self):
         self.documentText += r"\end{verbatim}" + "\n"
+        self.inCodeBlock = False
 
     def startCentering(self):
         self.documentText += r"\begin{center}"+"\n"

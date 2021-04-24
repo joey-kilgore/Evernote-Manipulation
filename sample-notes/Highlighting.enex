@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE en-export SYSTEM "http://xml.evernote.com/pub/evernote-export4.dtd">
+<en-export export-date="20210524T203820Z" application="Evernote" version="10.12.5">
+  <note>
+    <title>Highlighting</title>
+    <created>20210424T203455Z</created>
+    <updated>20210424T203807Z</updated>
+    <note-attributes>
+      <author>Joey Kilgore</author>
+    </note-attributes>
+    <content>
+      <![CDATA[<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE en-note SYSTEM "http://xml.evernote.com/pub/enml2.dtd"><en-note><div>To be able to differentiate between using special characters normally or using them for special latex stuff, we will use highlighting to show when a sequence will be used as fancy <span style="--en-highlight:yellow;background-color: #ffef9e;">\LaTeX\ </span> stuff in it</div><div><br /></div><div>this will look like normal text \forall x \in X, \quad \exists y \leq \epsilon</div><div>but when I highlight it then it will get to do fancy latex stuff <span style="--en-highlight:yellow;background-color: #ffef9e;">\forall x \in X, \quad \exists y \leq \epsilon</span></div></en-note>      ]]>
+    </content>
+  </note>
+</en-export>

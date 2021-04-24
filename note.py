@@ -63,9 +63,23 @@ class Note:
                 return
 
         if(node.tag == 'span'):
-            self.addTextToLatex(node)
-            self.latex.endText()
-            return
+            if('style' in node.attrib):
+                style = None
+                if('--en-highlight:yellow' in node.attrib['style']):
+                    self.latex.turnOffReplacement()
+                    style = 'latex'
+
+                self.addTextToLatex(node)
+                self.latex.addText(node.tail)
+                    
+                if(style == 'latex'):
+                    self.latex.turnOnReplacement()
+
+                return
+            else:
+                self.addTextToLatex(node)
+                self.latex.endText()
+                return
 
         if(node.tag == 'b'):
             self.latex.startBold()
@@ -131,6 +145,7 @@ class Note:
         for node in self.contentTree:
             self.addToLatex(node)
         self.latex.writeToFile()
+        self.saveResources()
 
     def saveResources(self):
         for resource in self.resources:
