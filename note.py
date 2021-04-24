@@ -30,23 +30,31 @@ class Note:
     def addToLatex(self, node):
         if(node.tag == "div"):
             if('style' in node.attrib):
-                alignment = None
+                style = None
                 if('text-align:center' in node.attrib['style']):
                     self.latex.startCentering()
-                    alignment = 'center'
+                    style = 'center'
+
                 if('text-align:right' in node.attrib['style']):
                     self.latex.startRightAlign()
-                    alignment = 'right'
+                    style = 'right'
+
+                if('--en-codeblock:true' in node.attrib['style']):
+                    self.latex.startCodeBlock()
+                    style = 'code'
                 
-                if(alignment != None):
+                if(style != None):
                     self.addTextToLatex(node)
                     self.latex.addText(node.tail)
 
-                if(alignment == 'center'):
+                if(style == 'center'):
                     self.latex.endCentering()
 
-                if(alignment == 'right'):
+                if(style == 'right'):
                     self.latex.endRightAlign()
+
+                if(style == 'code'):
+                    self.latex.endCodeBlock()
 
                 return
             else:

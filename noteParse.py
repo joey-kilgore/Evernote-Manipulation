@@ -81,3 +81,7 @@ parsedNote.exportToLatex()
 parsedNote = parseNote('./sample-notes/Fun with Formating.enex')
 parsedNote.printBasicStats()
 parsedNote.exportToLatex()
+
+parsedNote = parseNote('./sample-notes/Code blocks.enex')
+parsedNote.printBasicStats()
+parsedNote.exportToLatex()

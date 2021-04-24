@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE en-export SYSTEM "http://xml.evernote.com/pub/evernote-export4.dtd">
+<en-export export-date="20210524T195255Z" application="Evernote" version="10.12.5">
+  <note>
+    <title>Code blocks</title>
+    <created>20210424T194901Z</created>
+    <updated>20210424T195244Z</updated>
+    <note-attributes>
+      <author>Joey Kilgore</author>
+    </note-attributes>
+    <content>
+      <![CDATA[<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE en-note SYSTEM "http://xml.evernote.com/pub/enml2.dtd"><en-note><div>Now we can try and have some code in our evernote with a triple tick</div><div style="--en-codeblock:true;box-sizing: border-box; padding: 8px; font-family: Monaco, Menlo, Consolas, &quot;Courier New&quot;, monospace; font-size: 12px; color: rgb(51, 51, 51); border-top-left-radius: 4px; border-top-right-radius: 4px; border-bottom-right-radius: 4px; border-bottom-left-radius: 4px; background-color: rgb(251, 250, 248); border: 1px solid rgba(0, 0, 0, 0.14902); background-position: initial initial; background-repeat: initial initial;"><div># This is a code section</div><div>parsedNote = parseNote('./sample-notes/Code blocks.enex') </div><div>parsedNote.printBasicStats()</div><div>parsedNote.exportToLatex()</div><div><br /></div><div># and we can hopefully define a method with proper indentation</div><div>def foo():</div><div>    # This method does a summation</div><div>    sum = 0</div><div>    for i in range(10):</div><div>        sum += i</div><div>    return sum</div></div><div><br /></div><div>This is pretty cool that we can have a code chunk used to transpile this document</div></en-note>      ]]>
+    </content>
+  </note>
+</en-export>

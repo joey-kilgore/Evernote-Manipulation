@@ -26,12 +26,12 @@ class LatexDoc:
 
     def addText(self, text):
         if(text!=None):
-            self.documentText += text
+            self.documentText += text.replace(u'\xa0', u' ')
             self.endedText = False
 
     def endText(self):
         if(self.endedText == False):
-            self.documentText += "\n\n"
+            self.documentText += "\n"
             self.endedText == True
 
     def startBold(self):
@@ -43,11 +43,14 @@ class LatexDoc:
     def startUnderline(self):
         self.documentText += r"\underline{"
 
-    def startStrikethrough(self):
-        self.documentText += r"\st{"
-
     def endFormat(self):
         self.documentText += "}"
+
+    def startCodeBlock(self):
+        self.documentText += r"\begin{verbatim}" + "\n"
+
+    def endCodeBlock(self):
+        self.documentText += r"\end{verbatim}" + "\n"
 
     def startCentering(self):
         self.documentText += r"\begin{center}"+"\n"
@@ -62,7 +65,7 @@ class LatexDoc:
         self.documentText += r"\end{flushright}" + "\n"
 
     def addBreak(self):
-        self.documentText += "\n\n"
+        self.documentText += "\n"
 
     def startUnorderedList(self):
         self.documentText += r"\begin{itemize}" + "\n"
