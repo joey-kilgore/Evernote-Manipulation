@@ -51,8 +51,10 @@ class LatexDoc:
         self.replacement = False
 
     def endText(self):
-        if(self.endedText == False):
+        if(self.inCodeBlock):
             self.documentText += "\n"
+        if(self.endedText == False and not self.inCodeBlock):
+            self.documentText += "\n\n"
             self.endedText == True
 
     def startBold(self):
