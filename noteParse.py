@@ -63,3 +63,8 @@ parsedNote.exportToLatex()
 parsedNote = parseNote('./sample-notes/Multi Section.enex')
 parsedNote.printBasicStats()
 parsedNote.exportToLatex()
+
+parsedNote = parseNote('./sample-notes/Text and Image.enex')
+parsedNote.printBasicStats()
+parsedNote.exportToLatex()
+parsedNote.saveResources()
