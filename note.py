@@ -22,10 +22,64 @@ class Note:
         print("DIVS: "+str(len(self.contentTree.findall('div'))))
         print("RESOURCES: "+str(len(self.resources)))
 
+    def addTextToLatex(self, node):
+        self.latex.addText(node.text)
+        for child in node:
+            self.addToLatex(child)
+
     def addToLatex(self, node):
         if(node.tag == "div"):
-            self.latex.addText(node.text)
+            if('style' in node.attrib):
+                alignment = None
+                if('text-align:center' in node.attrib['style']):
+                    self.latex.startCentering()
+                    alignment = 'center'
+                if('text-align:right' in node.attrib['style']):
+                    self.latex.startRightAlign()
+                    alignment = 'right'
+                
+                if(alignment != None):
+                    self.addTextToLatex(node)
+                    self.latex.addText(node.tail)
+
+                if(alignment == 'center'):
+                    self.latex.endCentering()
+
+                if(alignment == 'right'):
+                    self.latex.endRightAlign()
+
+                return
+            else:
+                self.addTextToLatex(node)
+                self.latex.endText()
+                return
+
+        if(node.tag == 'span'):
+            self.addTextToLatex(node)
+            self.latex.endText()
+            return
+
+        if(node.tag == 'b'):
+            self.latex.startBold()
+            self.addTextToLatex(node)
+            self.latex.endFormat()
+            self.latex.addText(node.tail)
+            return
+
+        if(node.tag == 'i'):
+            self.latex.startItalic()
+            self.addTextToLatex(node)
+            self.latex.endFormat()
+            self.latex.addText(node.tail)
+            return
         
+        if(node.tag == 'u'):
+            self.latex.startUnderline()
+            self.addTextToLatex(node)
+            self.latex.endFormat()
+            self.latex.addText(node.tail)
+            return
+
         if(node.tag == 'br'):
             self.latex.addBreak()
 

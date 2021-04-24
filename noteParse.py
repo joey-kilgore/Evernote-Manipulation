@@ -77,3 +77,7 @@ parsedNote.saveResources()
 parsedNote = parseNote('./sample-notes/Lists.enex')
 parsedNote.printBasicStats()
 parsedNote.exportToLatex()
+
+parsedNote = parseNote('./sample-notes/Fun with Formating.enex')
+parsedNote.printBasicStats()
+parsedNote.exportToLatex()

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE en-export SYSTEM "http://xml.evernote.com/pub/evernote-export4.dtd">
+<en-export export-date="20210524T194801Z" application="Evernote" version="10.12.5">
+  <note>
+    <title>Fun with Formating</title>
+    <created>20210424T183636Z</created>
+    <updated>20210424T194734Z</updated>
+    <note-attributes>
+      <author>Joey Kilgore</author>
+    </note-attributes>
+    <content>
+      <![CDATA[<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE en-note SYSTEM "http://xml.evernote.com/pub/enml2.dtd"><en-note><div>this text has some <b>bold</b> in it</div><div>this text has some <i>italics</i> in it</div><div>this text has some <u>underline</u> in it</div><div>this text uses<b><i><u> bold underline and italics</u></i></b> in it</div><div><br /></div><h1>The following text is left aligned</h1><div><span style="color:rgb(0, 0, 0);">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</span></div><div><span style="color:rgb(0, 0, 0);"><span style="--en-markholder:true;"><br /></span></span></div><h1>The following text is centered</h1><div style="text-align:center;"><span style="color:rgb(0, 0, 0);">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</span></div><div style="text-align:center;"><span style="color:rgb(0, 0, 0);"><span style="--en-markholder:true;"><br /></span></span></div><h1>The following text is right aligned</h1><div style="text-align:right;"><span style="color:rgb(0, 0, 0);">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</span></div><div><br /></div><div>but in the end we can finish with being left aligned</div></en-note>      ]]>
+    </content>
+  </note>
+</en-export>
