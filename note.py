@@ -44,6 +44,23 @@ class Note:
         if(node.tag == 'a'):
             self.latex.addText(node.attrib['href'])
 
+        if(node.tag == 'ul'):
+            self.latex.startUnorderedList()
+            for child in node:
+                self.addToLatex(child)
+            self.latex.endUnorderedList()
+            return
+        
+        if(node.tag == 'ol'):
+            self.latex.startOrderedList()
+            for child in node:
+                self.addToLatex(child)
+            self.latex.endOrderedList()
+            return
+
+        if(node.tag == 'li'):
+            self.latex.addItem()
+
         for child in node:
             self.addToLatex(child)
 

@@ -29,6 +29,21 @@ class LatexDoc:
     def addBreak(self):
         self.documentText += "\n\n"
 
+    def startUnorderedList(self):
+        self.documentText += r"\begin{itemize}" + "\n"
+
+    def endUnorderedList(self):
+        self.documentText += r"\end{itemize}" + "\n"
+
+    def startOrderedList(self):
+        self.documentText += r"\begin{enumerate}" + "\n"
+
+    def endOrderedList(self):
+        self.documentText += r"\end{enumerate}" + "\n"
+    
+    def addItem(self):
+        self.documentText += r"\item "
+
     def addFigure(self, fileName):
         self.documentText += r"\begin{figure}[h!]" + "\n"
         self.documentText += r"\centering" + "\n"

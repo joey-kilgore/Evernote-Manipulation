@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE en-export SYSTEM "http://xml.evernote.com/pub/evernote-export4.dtd">
+<en-export export-date="20210524T181607Z" application="Evernote" version="10.12.5">
+  <note>
+    <title>Lists</title>
+    <created>20210424T181152Z</created>
+    <updated>20210424T181555Z</updated>
+    <note-attributes>
+      <author>Joey Kilgore</author>
+    </note-attributes>
+    <content>
+      <![CDATA[<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE en-note SYSTEM "http://xml.evernote.com/pub/enml2.dtd"><en-note><h1>Bulleted lists</h1><ul><li><div>this has some bullet points</div></li><li><div>they are relatively boring</div></li><li><div>but we can nest them</div></li><ul><li><div>like this is 1 layer in</div></li><li><div>this is also 1 layer in</div></li><ul><li><div>this is two layers in</div></li></ul></ul><li><div>this is back at the main level</div></li></ul><div><br /></div><h1>Numbered lists</h1><ol><li><div>this is a numbered list</div></li><li><div>they are useful for ordered material</div></li><ol><li><div>they can also nest (like this</div></li><li><div>and stay in the nested list</div></li><ol><li><div>or go even deeper</div></li><li><div>like this is 2 levels in</div></li></ol></ol><li><div>or we can go back to the main level</div></li></ol><div><br /></div><h1>Combining bullet points and numbered list</h1><ul><li><div>this is a bullet</div></li><ol><li><div>but within it is a numbered list</div></li><li><div>so we can have numbers 1 and 2</div></li></ol><li><div>and then we have a bullet point again</div></li></ul></en-note>      ]]>
+    </content>
+  </note>
+</en-export>

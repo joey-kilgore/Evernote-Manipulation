@@ -73,3 +73,7 @@ parsedNote = parseNote('./sample-notes/Note With Link.enex')
 parsedNote.printBasicStats()
 parsedNote.exportToLatex()
 parsedNote.saveResources()
+
+parsedNote = parseNote('./sample-notes/Lists.enex')
+parsedNote.printBasicStats()
+parsedNote.exportToLatex()
