@@ -18,34 +18,46 @@ recursivePrintTree("",contentParse)
 parsedNote = parseNote('./sample-notes/Just Text.enex')
 parsedNote.printBasicStats()
 parsedNote.exportToLatex()
+parsedNote.printLatex()
 
 parsedNote = parseNote('./sample-notes/Multi Section.enex')
 parsedNote.printBasicStats()
 parsedNote.exportToLatex()
+parsedNote.printLatex()
 
 parsedNote = parseNote('./sample-notes/Text and Image.enex')
 parsedNote.printBasicStats()
 parsedNote.exportToLatex()
+parsedNote.printLatex()
 
 parsedNote = parseNote('./sample-notes/Note With Link.enex')
 parsedNote.printBasicStats()
 parsedNote.exportToLatex()
+parsedNote.printLatex()
 
 parsedNote = parseNote('./sample-notes/Lists.enex')
 parsedNote.printBasicStats()
 parsedNote.exportToLatex()
+parsedNote.printLatex()
+
 
 parsedNote = parseNote('./sample-notes/Fun with Formating.enex')
 parsedNote.printBasicStats()
 parsedNote.exportToLatex()
+parsedNote.printLatex()
+
 
 parsedNote = parseNote('./sample-notes/Code blocks.enex')
 parsedNote.printBasicStats()
 parsedNote.exportToLatex()
+parsedNote.printLatex()
+
 
 parsedNote = parseNote('./sample-notes/Highlighting.enex')
 parsedNote.printBasicStats()
 parsedNote.exportToLatex()
+parsedNote.printLatex()
 
 parsedBook = parseNotebook('./sample-notes/Test Notes.enex')
 parsedBook.exportToLatex()
+parsedBook.printLatex()

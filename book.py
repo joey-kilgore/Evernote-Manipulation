@@ -29,14 +29,6 @@ class Book:
             self.latex.addChapter(note.title)
             note.exportToLatex()
             self.latex.documentText += note.latex.documentText
+    
+    def printLatex(self):
         self.latex.writeToFile()
-        self.saveResources()
-
-    def saveResources(self):
-        for note in self.notes:
-            for resource in note.resources:
-                resourceFile = resource.findall('resource-attributes')[0].findall('source-url')[0].text
-                resourceFile = "./output-doc/figs/" + resourceFile.split("+")[2] + ".png"
-                img_data = resource.findall('data')[0].text.strip().encode('utf-8')
-                with open(resourceFile, "wb") as fh:
-                    fh.write(base64.decodebytes(img_data))

@@ -30,6 +30,7 @@ class LatexDoc:
     def addText(self, text):
         if(text!=None):
             if(self.replacement == True and not self.inCodeBlock):
+                text = text.replace('\\', r'\textbackslash ')
                 text = text.replace('$', r'\$ ')
                 text = text.replace('%', r'\% ')
                 text = text.replace('_', r'\_ ')
@@ -37,7 +38,6 @@ class LatexDoc:
                 text = text.replace('{', r'\{ ')
                 text = text.replace('&', r'\& ')
                 text = text.replace('#', r'\# ')
-                text = text.replace('\\', r'\textbackslash ')
                 text = text.replace('~', r'\textasciitilde ')
 
             text = text.replace(u'\xa0', ' ')

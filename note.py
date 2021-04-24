@@ -144,8 +144,10 @@ class Note:
         self.latex = LatexDoc(self.title, self.author, 'article')
         for node in self.contentTree:
             self.addToLatex(node)
-        self.latex.writeToFile()
         self.saveResources()
+
+    def printLatex(self):
+        self.latex.writeToFile()
 
     def saveResources(self):
         for resource in self.resources:
