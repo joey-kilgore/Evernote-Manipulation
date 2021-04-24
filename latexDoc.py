@@ -9,8 +9,8 @@ class LatexDoc:
     endedText = True
     replacement = True
 
-    def __init__(self, title, author):
-        self.documentClass = "article"
+    def __init__(self, title, author, documentClass):
+        self.documentClass = documentClass
         self.title = title
         self.author = author
         self.filePath = "./output-doc/"+title+".tex"
@@ -111,15 +111,22 @@ class LatexDoc:
         self.documentText += r"\includegraphics[width=0.8\linewidth]{./figs/" + fileName +"}\n"
         self.documentText += r"\end{figure}" + "\n"
 
+    def addChapter(self, chapter):
+        self.documentText += r"\chapter{" + chapter + "}\n"
 
     def writeToFile(self):
         with open(self.filePath, 'w') as f:
-            f.write(r"\documentclass{"+self.documentClass+"}\n\n")
+            if(self.documentClass == 'book'):
+                f.write(r"\documentclass{"+self.documentClass+"}\n\n")
+            else:
+                f.write(r"\documentclass[12pt,a4paper]{book}\n\n")
             f.write(r"\usepackage{graphicx}" + "\n\n")
             f.write(r"\title{"+self.title+"}\n")
             f.write(r"\author{"+self.author+"}\n\n")
             f.write(r"\begin{document}"+"\n")
             f.write(r"\maketitle"+"\n")
+            if(self.documentClass == 'book'):
+                f.write(r"\tableofcontents")
             f.write(self.documentText + "\n")
             f.write(r"\end{document}")
 

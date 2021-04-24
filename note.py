@@ -70,11 +70,11 @@ class Note:
                     style = 'latex'
 
                 self.addTextToLatex(node)
-                self.latex.addText(node.tail)
                     
                 if(style == 'latex'):
                     self.latex.turnOnReplacement()
 
+                self.latex.addText(node.tail)
                 return
             else:
                 self.addTextToLatex(node)
@@ -141,7 +141,7 @@ class Note:
             self.addToLatex(child)
 
     def exportToLatex(self):
-        self.latex = LatexDoc(self.title, self.author)
+        self.latex = LatexDoc(self.title, self.author, 'article')
         for node in self.contentTree:
             self.addToLatex(node)
         self.latex.writeToFile()

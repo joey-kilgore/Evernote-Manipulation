@@ -4,6 +4,8 @@
 
 import xml.etree.ElementTree as ET
 import note
+import book
+import os
 
 def parseNote(fileName):
     tree = ET.parse(fileName)
@@ -31,6 +33,39 @@ def parseNote(fileName):
 
     return noteObj
 
+def parseNotebook(fileName):
+    tree = ET.parse(fileName)
+    enExport = tree.getroot()
+    noteTree = enExport[0]
+
+    bookObj = book.Book()
+    bookObj.title = os.path.splitext(os.path.basename(fileName))[0]
+
+    for noteTree in enExport.findall('note'):
+        title = noteTree.findall('title')[0].text
+        author = noteTree.findall('note-attributes')[0].findall('author')[0].text
+        created = noteTree.findall('created')[0].text
+        updated = noteTree.findall('updated')[0].text
+        
+        contentStr = noteTree.findall('content')[0].text
+        contentStr = contentStr.replace("""<?xml version="1.0" encoding="UTF-8" standalone="no"?>""", "")
+        contentStr = contentStr.replace("""<!DOCTYPE en-note SYSTEM "http://xml.evernote.com/pub/enml2.dtd">""","")
+        contentTree = ET.fromstring(contentStr)
+        
+        resourceListTree = noteTree.findall('resource')
+
+        noteObj = note.Note()
+        noteObj.author = author
+        noteObj.title = title
+        noteObj.created = created
+        noteObj.updated = updated
+        noteObj.contentTree = contentTree
+        noteObj.resources = resourceListTree
+
+        bookObj.notes.append(noteObj)
+        bookObj.author = noteObj.author
+    
+    return bookObj
 
 def recursivePrintTree(prefix, node):
     print(prefix + "|-->" + node.tag)

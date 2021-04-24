@@ -1,4 +1,4 @@
-from noteParse import printTree, parseNote, recursivePrintTree
+from noteParse import printTree, parseNote, recursivePrintTree, parseNotebook
 import xml.etree.ElementTree as ET
 import note
 
@@ -46,3 +46,6 @@ parsedNote.exportToLatex()
 parsedNote = parseNote('./sample-notes/Highlighting.enex')
 parsedNote.printBasicStats()
 parsedNote.exportToLatex()
+
+parsedBook = parseNotebook('./sample-notes/Test Notes.enex')
+parsedBook.exportToLatex()
