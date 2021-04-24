@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE en-export SYSTEM "http://xml.evernote.com/pub/evernote-export4.dtd">
+<en-export export-date="20210524T180448Z" application="Evernote" version="10.12.5">
+  <note>
+    <title>Note With Link</title>
+    <created>20210424T180358Z</created>
+    <updated>20210424T180436Z</updated>
+    <note-attributes>
+      <author>Joey Kilgore</author>
+    </note-attributes>
+    <content>
+      <![CDATA[<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE en-note SYSTEM "http://xml.evernote.com/pub/enml2.dtd"><en-note><div>This note has a link to this repository for manipulating evernotes into \LaTeX documents</div><div>https://github.com/joey-kilgore/Evernote-Manipulation</div></en-note>      ]]>
+    </content>
+  </note>
+</en-export>

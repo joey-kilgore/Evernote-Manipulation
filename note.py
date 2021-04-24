@@ -40,6 +40,9 @@ class Note:
 
         if(node.tag == 'en-media'):
             self.latex.addFigure(node.attrib['hash']+".png")
+        
+        if(node.tag == 'a'):
+            self.latex.addText(node.attrib['href'])
 
         for child in node:
             self.addToLatex(child)

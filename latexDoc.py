@@ -24,7 +24,7 @@ class LatexDoc:
 
     def addText(self, text):
         if(text!=None):
-            self.documentText += text + "\n\n"
+            self.documentText += text + "\n"
 
     def addBreak(self):
         self.documentText += "\n\n"
