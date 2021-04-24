@@ -1,3 +1,7 @@
+# noteParse contains methods that are used in breaking
+#  apart evernote .enex files and giving them a parsed
+#  and more accessible format
+
 import xml.etree.ElementTree as ET
 import note
 

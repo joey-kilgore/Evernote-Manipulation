@@ -1,3 +1,5 @@
+# the Note class contains relevant information for storing
+#  data related to evernotes
 class Note:
     title = ""
     created = ""
