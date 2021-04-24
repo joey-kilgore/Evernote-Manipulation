@@ -38,6 +38,9 @@ class Note:
         if(node.tag == 'h3'):
             self.latex.addSubSubSection(node.text)
 
+        if(node.tag == 'en-media'):
+            self.latex.addFigure(node.attrib['hash']+".png")
+
         for child in node:
             self.addToLatex(child)
 
