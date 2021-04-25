@@ -3,6 +3,10 @@
 from latexDoc import LatexDoc
 import base64
 import note
+from datetime import datetime
+
+def getDateTimeNote(note):
+    return datetime.strptime(note.created, "%Y%m%dT%H%M%SZ")
 
 class Book:
     title = ""
@@ -24,6 +28,7 @@ class Book:
         print("RESOURCES: "+str(len(self.resources)))
 
     def exportToLatex(self):
+        self.notes.sort(key=getDateTimeNote)
         self.latex = LatexDoc(self.title, self.author, 'book')
         for note in self.notes:
             self.latex.addChapter(note.title)
