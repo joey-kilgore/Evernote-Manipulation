@@ -120,10 +120,10 @@ class LatexDoc:
 
     def writeToFile(self):
         with open(self.filePath, 'w') as f:
-            if(self.documentClass == 'book'):
+            if(self.documentClass != 'book'):
                 f.write(r"\documentclass{"+self.documentClass+"}\n\n")
             else:
-                f.write(r"\documentclass[12pt,a4paper]{book}\n\n")
+                f.write(r"\documentclass[12pt,a4paper]{book}" + "\n\n")
             f.write(r"\usepackage{graphicx}" + "\n\n")
             f.write(r"\title{"+self.title+"}\n")
             f.write(r"\author{"+self.author+"}\n\n")
