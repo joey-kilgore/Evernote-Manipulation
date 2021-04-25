@@ -41,6 +41,8 @@ class LatexDoc:
                 text = text.replace('~', r'\textasciitilde ')
 
             text = text.replace(u'\xa0', ' ')
+            text = text.encode('ascii', 'ignore')
+            text = text.decode()
             self.documentText += text
             self.endedText = False
 

@@ -43,14 +43,18 @@ def parseNotebook(fileName):
 
     for noteTree in enExport.findall('note'):
         title = noteTree.findall('title')[0].text
-        author = noteTree.findall('note-attributes')[0].findall('author')[0].text
+        try:
+            author = noteTree.findall('note-attributes')[0].findall('author')[0].text
+        except:
+            author = "Joey Kilgore"
         created = noteTree.findall('created')[0].text
         updated = noteTree.findall('updated')[0].text
         
         contentStr = noteTree.findall('content')[0].text
         contentStr = contentStr.replace("""<?xml version="1.0" encoding="UTF-8" standalone="no"?>""", "")
         contentStr = contentStr.replace("""<!DOCTYPE en-note SYSTEM "http://xml.evernote.com/pub/enml2.dtd">""","")
-        contentTree = ET.fromstring(contentStr)
+        contentStr = contentStr.replace("&nbsp;", "")
+        contentTree = ET.fromstring(contentStr.strip())
         
         resourceListTree = noteTree.findall('resource')
 
