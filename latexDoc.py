@@ -1,3 +1,9 @@
+class State:
+    def __init__(self, stateType, innerText, tailText):
+        self.stateType = stateType
+        self.innerText = innerText
+        self.tailText = tailText
+
 class LatexDoc:
     documentClass = ""
     title = ""
@@ -5,6 +11,7 @@ class LatexDoc:
     date = ""
     documentText = ""
     filePath = ""
+    stateStack = []
 
     endedText = True
     replacement = True
@@ -18,33 +25,109 @@ class LatexDoc:
         self.replacement = True
         self.inCodeBlock = False
 
-    def addSection(self, sectionTitle):
-        self.documentText += r"\section{"+sectionTitle+"}\n"
+    def addState(self, stateType, innerText, tailText):
+        newState = State(stateType, innerText,tailText)
+        self.stateStack.append(newState)
 
-    def addSubSection(self, subSectionTitle):
-        self.documentText += r"\subsection{"+subSectionTitle+"}\n"
-    
-    def addSubSubSection(self, subSubSectionTitle):
-        self.documentText += r"\subsubsection{"+subSubSectionTitle+"}\n"
+        if(stateType == "SECTION"):
+            self.startSection()
+        elif(stateType == "SUBSECTION"):
+            self.startSubSection()
+        elif(stateType == "SUBSUBSECTION"):
+            self.startSubSubSection()
+        elif(stateType == "LITERAL"):
+            self.turnOffReplacement()
+        elif(stateType == "BOLD"):
+            self.startBold()
+        elif(stateType == "ITALIC"):
+            self.startItalic()
+        elif(stateType == "UNDERLINE"):
+            self.startUnderline()
+        elif(stateType == "UNORDEREDLIST"):
+            self.startUnorderedList()
+        elif(stateType == "ORDEREDLIST"):
+            self.startOrderedList()
+        elif(stateType == "ITEM"):
+            self.startItem()
+        elif(stateType == "CODEBLOCK"):
+            self.startCodeBlock()
+        elif(stateType == "CENTERED"):
+            self.startCentering()
+        elif(stateType == "RIGHTALIGNED"):
+            self.startRightAlign()
+        elif(stateType == "BREAK"):
+            self.addBreak()
+        elif(stateType == "FIGURE"):
+            self.addFigure()
+            return
+
+        self.addText(innerText)
+
+    def removeState(self):
+        tailText = self.stateStack[-1].tailText
+        stateType = self.stateStack[-1].stateType
+
+        if(stateType == "SECTION"):
+            self.endSect()
+        elif(stateType == "SUBSECTION"):
+            self.endSect()
+        elif(stateType == "SUBSUBSECTION"):
+            self.endSect()
+        elif(stateType == "LITERAL"):
+            self.turnOnReplacement()
+        elif(stateType == "BOLD"):
+            self.endFormat()
+        elif(stateType == "ITALIC"):
+            self.endFormat()
+        elif(stateType == "UNDERLINE"):
+            self.endFormat()
+        elif(stateType == "UNORDEREDLIST"):
+            self.endUnorderedList()
+        elif(stateType == "ORDEREDLIST"):
+            self.endOrderedList()
+        elif(stateType == "ITEM"):
+            self.endItem()
+        elif(stateType == "CODEBLOCK"):
+            self.endCodeBlock()
+        elif(stateType == "CENTERED"):
+            self.endCentering()
+        elif(stateType == "RIGHTALIGNED"):
+            self.endRightAlign()
+        elif(stateType == "TEXT"):
+            self.endText()
+
+        self.stateStack.pop()
+        self.addText(tailText)
 
     def addText(self, text):
         if(text!=None):
             if(self.replacement == True and not self.inCodeBlock):
-                text = text.replace('\\', r'\textbackslash ')
-                text = text.replace('$', r'\$ ')
-                text = text.replace('%', r'\% ')
-                text = text.replace('_', r'\_ ')
-                text = text.replace('}', r'\} ')
-                text = text.replace('{', r'\{ ')
-                text = text.replace('&', r'\& ')
-                text = text.replace('#', r'\# ')
-                text = text.replace('~', r'\textasciitilde ')
+                    text = text.replace('\\', r'\textbackslash ')
+                    text = text.replace('$', r'\$ ')
+                    text = text.replace('%', r'\% ')
+                    text = text.replace('_', r'\_ ')
+                    text = text.replace('}', r'\} ')
+                    text = text.replace('{', r'\{ ')
+                    text = text.replace('&', r'\& ')
+                    text = text.replace('#', r'\# ')
+                    text = text.replace('~', r'\textasciitilde ')
 
             text = text.replace(u'\xa0', ' ')
             text = text.encode('ascii', 'ignore')
             text = text.decode()
             self.documentText += text
-            self.endedText = False
+
+    def startSection(self):
+        self.documentText += r"\section{"
+
+    def startSubSection(self):
+        self.documentText += r"\subsection{"
+    
+    def startSubSubSection(self):
+        self.documentText += r"\subsubsection{"
+
+    def endSect(self):
+        self.documentText += "}\n"
 
     def turnOnReplacement(self):
         self.replacement = True
@@ -55,9 +138,12 @@ class LatexDoc:
     def endText(self):
         if(self.inCodeBlock):
             self.documentText += "\n"
-        if(self.endedText == False and not self.inCodeBlock):
+            return
+        if(len(self.stateStack) < 1 or self.stateStack[-1].stateType == "TEXT"):
             self.documentText += "\n\n"
-            self.endedText == True
+            return
+        
+        self.documentText += "\n"
 
     def startBold(self):
         self.documentText += r"\textbf{"
@@ -106,10 +192,14 @@ class LatexDoc:
     def endOrderedList(self):
         self.documentText += r"\end{enumerate}" + "\n"
     
-    def addItem(self):
+    def startItem(self):
         self.documentText += r"\item "
+    
+    def endItem(self):
+        self.documentText += "\n"
 
-    def addFigure(self, fileName):
+    def addFigure(self):
+        fileName = self.stateStack[-1].innerText
         self.documentText += r"\begin{figure}[h!]" + "\n"
         self.documentText += r"\centering" + "\n"
         self.documentText += r"\includegraphics[width=0.8\linewidth]{./figs/" + fileName +"}\n"

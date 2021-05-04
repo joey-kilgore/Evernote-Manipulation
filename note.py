@@ -22,128 +22,85 @@ class Note:
         print("DIVS: "+str(len(self.contentTree.findall('div'))))
         print("RESOURCES: "+str(len(self.resources)))
 
-    def addTextToLatex(self, node):
-        self.latex.addText(node.text)
-        for child in node:
-            self.addToLatex(child)
-
-    def addToLatex(self, node):
+    def getStateTypeNode(self, node):
         if(node.tag == "div"):
-            if('style' in node.attrib):
-                style = None
+            if("style" in node.attrib):
                 if('text-align:center' in node.attrib['style']):
-                    self.latex.startCentering()
-                    style = 'center'
-
+                    return "CENTERED"
                 if('text-align:right' in node.attrib['style']):
-                    self.latex.startRightAlign()
-                    style = 'right'
-
+                    return "RIGHTALIGNED"
                 if('--en-codeblock:true' in node.attrib['style']):
-                    self.latex.startCodeBlock()
-                    style = 'code'
-                
-                if(style != None):
-                    self.addTextToLatex(node)
-                    self.latex.addText(node.tail)
-
-                if(style == 'center'):
-                    self.latex.endCentering()
-
-                if(style == 'right'):
-                    self.latex.endRightAlign()
-
-                if(style == 'code'):
-                    self.latex.endCodeBlock()
-
-                return
-            else:
-                self.addTextToLatex(node)
-                self.latex.endText()
-                return
+                    return "CODEBLOCK"
+                return "TEXT"
+            return "TEXT"
 
         if(node.tag == 'span'):
             if('style' in node.attrib):
-                style = None
                 if('--en-highlight:yellow' in node.attrib['style']):
-                    self.latex.turnOffReplacement()
-                    style = 'latex'
-
-                self.addTextToLatex(node)
-                    
-                if(style == 'latex'):
-                    self.latex.turnOnReplacement()
-
-                self.latex.addText(node.tail)
-                return
-            else:
-                self.addTextToLatex(node)
-                self.latex.endText()
-                return
-
+                    return "LITERAL"
+                return "TEXT"
+            return "TEXT"
+        
         if(node.tag == 'b'):
-            self.latex.startBold()
-            self.addTextToLatex(node)
-            self.latex.endFormat()
-            self.latex.addText(node.tail)
-            return
+            return "BOLD"
 
         if(node.tag == 'i'):
-            self.latex.startItalic()
-            self.addTextToLatex(node)
-            self.latex.endFormat()
-            self.latex.addText(node.tail)
-            return
-        
+            return "ITALIC"
+
         if(node.tag == 'u'):
-            self.latex.startUnderline()
-            self.addTextToLatex(node)
-            self.latex.endFormat()
-            self.latex.addText(node.tail)
-            return
+            return "UNDERLINE"
 
         if(node.tag == 'br'):
-            self.latex.addBreak()
+            return "BREAK"
 
         if(node.tag == 'h1'):
-            self.latex.addSection(node.text)
+            return "SECTION"
         
         if(node.tag == 'h2'):
-            self.latex.addSubSection(node.text)
+            return "SUBSECTION"
         
         if(node.tag == 'h3'):
-            self.latex.addSubSubSection(node.text)
+            return "SUBSUBSECTION"
 
         if(node.tag == 'en-media'):
-            self.latex.addFigure(node.attrib['hash']+".png")
+            return "FIGURE"
         
         if(node.tag == 'a'):
-            self.latex.addText(node.attrib['href'])
+            #self.latex.addText(node.attrib['href'])
+            return "TEXT"
 
         if(node.tag == 'ul'):
-            self.latex.startUnorderedList()
-            for child in node:
-                self.addToLatex(child)
-            self.latex.endUnorderedList()
-            return
+            return "UNORDEREDLIST"
         
         if(node.tag == 'ol'):
-            self.latex.startOrderedList()
-            for child in node:
-                self.addToLatex(child)
-            self.latex.endOrderedList()
-            return
+            return "ORDEREDLIST"
 
         if(node.tag == 'li'):
-            self.latex.addItem()
+            return "ITEM"
+
+    def getTextNode(self, node):
+        if(node.tag == 'en-media'):
+            return node.attrib['hash']+".png"
+        if(node.tag == 'a'):
+            return node.attrib['href']
+        return node.text
+
+    def addNodeToLatex(self, node):
+        stateType = self.getStateTypeNode(node)
+        innerText = self.getTextNode(node)
+        tailText = node.tail
+
+        self.latex.addState(stateType, innerText, tailText)
 
         for child in node:
-            self.addToLatex(child)
+            self.addNodeToLatex(child)
+        
+        self.latex.removeState()
 
     def exportToLatex(self):
         self.latex = LatexDoc(self.title, self.author, 'article')
         for node in self.contentTree:
-            self.addToLatex(node)
+            self.addNodeToLatex(node)
         self.saveResources()
 
     def printLatex(self):
