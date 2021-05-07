@@ -15,6 +15,7 @@ class LatexDoc:
 
     endedText = True
     replacement = True
+    hasAddedText = False
 
     def __init__(self, title, author, documentClass):
         self.documentClass = documentClass
@@ -85,8 +86,6 @@ class LatexDoc:
             self.endUnorderedList()
         elif(stateType == "ORDEREDLIST"):
             self.endOrderedList()
-        elif(stateType == "ITEM"):
-            self.endItem()
         elif(stateType == "CODEBLOCK"):
             self.endCodeBlock()
         elif(stateType == "CENTERED"):
@@ -116,6 +115,7 @@ class LatexDoc:
             text = text.encode('ascii', 'ignore')
             text = text.decode()
             self.documentText += text
+            self.hasAddedText = True
 
     def startSection(self):
         self.documentText += r"\section{"
@@ -136,10 +136,19 @@ class LatexDoc:
         self.replacement = False
 
     def endText(self):
+        if(not self.hasAddedText):
+            # if we haven't added text we don't want to add extra new lines
+            return
+
+        # we are about to add some number of new line characters so we can
+        #   reset our text flag
+        self.hasAddedText = False
         if(self.inCodeBlock):
             self.documentText += "\n"
             return
         if(len(self.stateStack) < 1 or self.stateStack[-1].stateType == "TEXT"):
+            # to leave a text state, we need to add 2 new lines so that we create
+            #  a new paragraph in LaTeX
             self.documentText += "\n\n"
             return
         
@@ -194,9 +203,6 @@ class LatexDoc:
     
     def startItem(self):
         self.documentText += r"\item "
-    
-    def endItem(self):
-        self.documentText += "\n"
 
     def addFigure(self):
         fileName = self.stateStack[-1].innerText

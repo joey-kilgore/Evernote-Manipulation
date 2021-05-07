@@ -11,22 +11,7 @@
     <content>
       <![CDATA[<?xml version="1.0" encoding="UTF-8" standalone="no"?>
       <!DOCTYPE en-note SYSTEM "http://xml.evernote.com/pub/enml2.dtd">
-      <en-note>
-        <div>Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
-        Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
-        when an unknown printer took a galley of type and scrambled it to make a type specimen book. 
-        It has survived not only five centuries, but also the leap into electronic typesetting, 
-        remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset 
-        sheets containing Lorem Ipsum passages, and more recently with desktop publishing software 
-        like Aldus PageMaker including versions of Lorem Ipsum.</div>
-        <div>
-          <br />
-        </div>
-        <en-media style="--en-naturalWidth:1024; --en-naturalHeight:500;" alt="Best Note Taking App - Organize Your Notes with Evernote" hash="632513a6c2b935398dc79d5495815192" type="image/png" />
-        <div>
-          <br />
-        </div>
-      </en-note>      ]]>
+      <en-note><div>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</div><div><br /></div><en-media style="--en-naturalWidth:1024; --en-naturalHeight:500;" alt="Best Note Taking App - Organize Your Notes with Evernote" hash="632513a6c2b935398dc79d5495815192" type="image/png" /><div><br /></div></en-note>      ]]>
     </content>
     <resource>
       <data encoding="base64">
