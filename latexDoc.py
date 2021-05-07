@@ -1,3 +1,5 @@
+import defs
+
 class State:
     def __init__(self, stateType, innerText, tailText):
         self.stateType = stateType
@@ -12,6 +14,7 @@ class LatexDoc:
     documentText = ""
     filePath = ""
     stateStack = []
+    addons = []
 
     endedText = True
     replacement = True
@@ -228,5 +231,10 @@ class LatexDoc:
             if(self.documentClass == 'book'):
                 f.write(r"\tableofcontents")
             f.write(self.documentText + "\n")
+
+            if('bib' in self.addons):
+                f.write(r"\bibliographystyle{plain}" + "\n")
+                f.write(r"\bibliography{" + defs.BIB_FILE_PATH + "}\n")
+
             f.write(r"\end{document}")
 

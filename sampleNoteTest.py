@@ -58,6 +58,11 @@ parsedNote.printBasicStats()
 parsedNote.exportToLatex()
 parsedNote.printLatex()
 
+parsedNote = parseNote('./sample-notes/Citations.enex')
+parsedNote.printBasicStats()
+parsedNote.exportToLatex()
+parsedNote.printLatex()
+
 parsedBook = parseNotebook('./sample-notes/Test Notes.enex')
 parsedBook.exportToLatex()
 parsedBook.printLatex()

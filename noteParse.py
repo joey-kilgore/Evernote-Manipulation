@@ -31,6 +31,9 @@ def parseNote(fileName):
     noteObj.contentTree = contentTree
     noteObj.resources = resourceListTree
 
+    for tagNode in noteTree.findall('tag'):
+        noteObj.addTag(tagNode.text)
+
     return noteObj
 
 def parseNotebook(fileName):

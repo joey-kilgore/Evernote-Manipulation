@@ -10,6 +10,7 @@ class Note:
     author = ""
     contentTree = ""
     resources = ""
+    tags = []
     latex = ""
 
     def __init__(self):
@@ -21,6 +22,9 @@ class Note:
         print("AUTHOR: "+self.author)
         print("DIVS: "+str(len(self.contentTree.findall('div'))))
         print("RESOURCES: "+str(len(self.resources)))
+
+    def addTag(self, tagName):
+        self.tags.append(tagName)
 
     def getStateTypeNode(self, node):
         if(node.tag == "div"):
@@ -99,6 +103,7 @@ class Note:
 
     def exportToLatex(self):
         self.latex = LatexDoc(self.title, self.author, 'article')
+        self.latex.addons = self.tags
         for node in self.contentTree:
             self.addNodeToLatex(node)
         self.saveResources()

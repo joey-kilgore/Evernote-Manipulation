@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE en-export SYSTEM "http://xml.evernote.com/pub/evernote-export4.dtd">
+<en-export export-date="20210607T221451Z" application="Evernote" version="10.12.6">
+  <note>
+    <title>Citations</title>
+    <created>20210507T220150Z</created>
+    <updated>20210507T221438Z</updated>
+    <tag>bib</tag>
+    <tag>otherTag</tag>
+    <note-attributes>
+      <author>Joey Kilgore</author>
+    </note-attributes>
+    <content>
+      <![CDATA[<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE en-note SYSTEM "http://xml.evernote.com/pub/enml2.dtd"><en-note><h1>Using Bibliography</h1><div>This utilizes some fancy <span style="--en-highlight:yellow;background-color: #ffef9e;">\LaTeX\ </span> to get a bibliography added to the document. In the evernote we can add the bib tag to the note, and we will use that tag to indicate we should include a bibliography in the .tex file.</div><div><br /></div><h1>Sample Citation</h1><div>As noted in <span style="--en-highlight:yellow;background-color: #ffef9e;">\cite{eggers2021}</span> electrical nerve block can be modeled using the MRG Model (defined in <span style="--en-highlight:yellow;background-color: #ffef9e;">\cite{McIntyre2001}</span>).</div></en-note>      ]]>
+    </content>
+  </note>
+</en-export>

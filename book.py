@@ -31,6 +31,8 @@ class Book:
         self.notes.sort(key=getDateTimeNote)
         self.latex = LatexDoc(self.title, self.author, 'book')
         for note in self.notes:
+            for tag in note.tags:
+                self.latex.addons.append(tag)
             self.latex.addChapter(note.title)
             note.exportToLatex()
             self.latex.documentText += note.latex.documentText

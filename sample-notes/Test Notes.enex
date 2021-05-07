@@ -1,6 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE en-export SYSTEM "http://xml.evernote.com/pub/evernote-export4.dtd">
-<en-export export-date="20210524T220742Z" application="Evernote" version="10.12.5">
+<en-export export-date="20210607T222730Z" application="Evernote" version="10.12.6">
+  <note>
+    <title>Citations</title>
+    <created>20210507T220150Z</created>
+    <updated>20210507T222500Z</updated>
+    <tag>bib</tag>
+    <note-attributes>
+      <author>Joey Kilgore</author>
+    </note-attributes>
+    <content>
+      <![CDATA[<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE en-note SYSTEM "http://xml.evernote.com/pub/enml2.dtd"><en-note><h1>Using Bibliography</h1><div>This utilizes some fancy <span style="--en-highlight:yellow;background-color: #ffef9e;">\LaTeX\ </span> to get a bibliography added to the document. In the evernote we can add the bib tag to the note, and we will use that tag to indicate we should include a bibliography in the .tex file.</div><div><br /></div><h1>Sample Citation</h1><div>As noted in <span style="--en-highlight:yellow;background-color: #ffef9e;">\cite{eggers2021}</span> electrical nerve block can be modeled using the MRG Model (defined in <span style="--en-highlight:yellow;background-color: #ffef9e;">\cite{McIntyre2002}</span>).</div></en-note>      ]]>
+    </content>
+  </note>
   <note>
     <title>Code blocks</title>
     <created>20210424T194901Z</created>
@@ -10,7 +23,7 @@
     </note-attributes>
     <content>
       <![CDATA[<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!DOCTYPE en-note SYSTEM "http://xml.evernote.com/pub/enml2.dtd"><en-note><div>Now we can try and have some code in our evernote with a triple tick</div><div style="--en-codeblock:true;box-sizing: border-box; padding: 8px; font-family: Monaco, Menlo, Consolas, &quot;Courier New&quot;, monospace; font-size: 12px; color: rgb(51, 51, 51); border-top-left-radius: 4px; border-top-right-radius: 4px; border-bottom-right-radius: 4px; border-bottom-left-radius: 4px; background-color: rgb(251, 250, 248); border: 1px solid rgba(0, 0, 0, 0.14902); background-position: initial initial; background-repeat: initial initial;"><div># This is a code section</div><div>parsedNote = parseNote('./sample-notes/Code blocks.enex') </div><div>parsedNote.printBasicStats()</div><div>parsedNote.exportToLatex()</div><div><br /></div><div># and we can hopefully define a method with proper indentation</div><div>def foo():</div><div>    # This method does a summation</div><div>    sum = 0</div><div>    for i in range(10):</div><div>        sum += i</div><div>    return sum</div></div><div><br /></div><div>This is pretty cool that we can have a code chunk used to transpile this document</div></en-note>      ]]>
+<!DOCTYPE en-note SYSTEM "http://xml.evernote.com/pub/enml2.dtd"><en-note><div>Now we can try and have some code in our evernote with a triple tick</div><div style="--en-codeblock:true;box-sizing: border-box; padding: 8px; font-family: Monaco, Menlo, Consolas, &quot;Courier New&quot;, monospace; font-size: 12px; color: rgb(51, 51, 51); border-top-left-radius: 4px; border-top-right-radius: 4px; border-bottom-right-radius: 4px; border-bottom-left-radius: 4px; background-color: rgb(251, 250, 248); border: 1px solid rgba(0, 0, 0, 0.14902); background-position: initial initial; background-repeat: initial initial;"><div># This is a code section</div><div>parsedNote = parseNote('./sample-notes/Code blocks.enex') </div><div>parsedNote.printBasicStats()</div><div>parsedNote.exportToLatex()</div><div><br /></div><div># and we can hopefully define a method with proper indentation</div><div>def foo():</div><div>    # This method does a summation</div><div>    sum = 0</div><div>    for i in range(10):</div><div>        sum += i</div><div>    return sum</div></div><div><br /></div><div>This is pretty cool that we can have a code chunk used to transpile this document</div></en-note>      ]]>
     </content>
   </note>
   <note>

@@ -1,0 +1,1 @@
+BIB_FILE_PATH = "L:/Work/MendeleyBib/library.bib"
