@@ -82,6 +82,24 @@ class Note:
         if(node.tag == 'li'):
             return "ITEM"
 
+        if(node.tag == 'table'):
+            return "TABLE"
+        
+        if(node.tag == 'colgroup'):
+            return "ALLCOLINFO"
+
+        if(node.tag == 'col'):
+            return "COLINFO"
+
+        if(node.tag == 'tbody'):
+            return "TABLEBODY"
+
+        if(node.tag == 'tr'):
+            return "TABLEROW"
+        
+        if(node.tag == 'td'):
+            return "TABLECELL"
+
     def getTextNode(self, node):
         if(node.tag == 'en-media'):
             return node.attrib['hash']+".png"

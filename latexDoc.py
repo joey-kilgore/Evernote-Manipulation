@@ -15,6 +15,8 @@ class LatexDoc:
     filePath = ""
     stateStack = []
     addons = []
+    numColumns = 0  # track number of columns when creating a table
+    curColumn = 0   # track the current column of the text
 
     endedText = True
     replacement = True
@@ -64,6 +66,16 @@ class LatexDoc:
         elif(stateType == "FIGURE"):
             self.addFigure()
             return
+        elif(stateType == "TABLE"):
+            self.startTable()
+        elif(stateType == "ALLCOLINFO"):
+            self.startTableInfo()
+        elif(stateType == "COLINFO"):
+            self.addColumn()
+        elif(stateType == "TABLEROW"):
+            self.startRow()
+        elif(stateType == "TABLECELL"):
+            self.startCell()
 
         self.addText(innerText)
 
@@ -97,6 +109,14 @@ class LatexDoc:
             self.endRightAlign()
         elif(stateType == "TEXT"):
             self.endText()
+        elif(stateType == "TABLE"):
+            self.endTable()
+        elif(stateType == "ALLCOLINFO"):
+            self.endTableInfo()
+        elif(stateType == "TABLEROW"):
+            self.endRow()
+        elif(stateType == "TABLECELL"):
+            self.endCell()
 
         self.stateStack.pop()
         self.addText(tailText)
@@ -206,6 +226,39 @@ class LatexDoc:
     
     def startItem(self):
         self.documentText += r"\item "
+
+    def startTable(self):
+        self.documentText += r"\begin{tabular}"
+    
+    def endTable(self):
+        self.documentText += r"\hline" + "\n"
+        self.documentText += r"\end{tabular}" + "\n"
+    
+    def startTableInfo(self):
+        self.numColumns = 0
+    
+    def endTableInfo(self):
+        self.documentText += r"{ |"
+        for col in range(self.numColumns):
+            self.documentText += r"c|"
+        self.documentText += r" }" + "\n"
+    
+    def addColumn(self):
+        self.numColumns += 1
+    
+    def startRow(self):
+        self.curColumn = 0
+        self.documentText += r"\hline" + "\n"
+    
+    def endRow(self):
+        self.documentText += r"\\" + "\n"
+    
+    def startCell(self):
+        self.curColumn += 1
+
+    def endCell(self):
+        if(self.curColumn != self.numColumns):
+            self.documentText += r" & "
 
     def addFigure(self):
         fileName = self.stateStack[-1].innerText

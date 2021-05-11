@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE en-export SYSTEM "http://xml.evernote.com/pub/evernote-export4.dtd">
-<en-export export-date="20210607T222730Z" application="Evernote" version="10.12.6">
+<en-export export-date="20210611T021349Z" application="Evernote" version="10.13.4">
   <note>
     <title>Citations</title>
     <created>20210507T220150Z</created>
@@ -96,6 +96,18 @@
     <content>
       <![CDATA[<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE en-note SYSTEM "http://xml.evernote.com/pub/enml2.dtd"><en-note><div>This note has a link to this repository for manipulating evernotes into \LaTeX documents</div><div>https://github.com/joey-kilgore/Evernote-Manipulation</div></en-note>      ]]>
+    </content>
+  </note>
+  <note>
+    <title>Tables</title>
+    <created>20210511T012053Z</created>
+    <updated>20210511T012306Z</updated>
+    <note-attributes>
+      <author>Joey Kilgore</author>
+    </note-attributes>
+    <content>
+      <![CDATA[<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE en-note SYSTEM "http://xml.evernote.com/pub/enml2.dtd"><en-note><div>Below is a sample table with 4 rows and 3 columns.</div><div><br /></div><table width="570px" style="width:570px;border-collapse:collapse;"><colgroup><col style="width: 190px;" /><col style="width: 190px;" /><col style="width: 190px;" /></colgroup><tbody><tr><td style="border-color:#ccc;border-width:1px;border-style:solid;padding:10px;"><div>Column 1 Header</div></td><td style="border-color:#ccc;border-width:1px;border-style:solid;padding:10px;"><div>Column 2 Header</div></td><td style="border-color:#ccc;border-width:1px;border-style:solid;padding:10px;"><div>Column 3 Header</div></td></tr><tr><td style="border-color:#ccc;border-width:1px;border-style:solid;padding:10px;"><div>this is just text</div></td><td style="border-color:#ccc;border-width:1px;border-style:solid;padding:10px;"><div>column 2 text</div></td><td style="border-color:#ccc;border-width:1px;border-style:solid;padding:10px;"><div><i>this is italics</i></div></td></tr><tr><td style="border-color:#ccc;border-width:1px;border-style:solid;padding:10px;"><div>this is more text</div></td><td style="border-color:#ccc;border-width:1px;border-style:solid;padding:10px;"><div>even more column 2 text</div></td><td style="border-color:#ccc;border-width:1px;border-style:solid;padding:10px;"><div><b>this is bold</b></div></td></tr><tr><td style="vertical-align:middle;border-color:#ccc;border-width:1px;border-style:solid;padding:10px;"><div>this is even more text</div></td><td style="border-color:#ccc;border-width:1px;border-style:solid;padding:10px;"><div>some final text</div></td><td style="border-color:#ccc;border-width:1px;border-style:solid;padding:10px;"><div><u>this is underlined</u></div></td></tr></tbody></table><div><br /></div></en-note>      ]]>
     </content>
   </note>
   <note>
