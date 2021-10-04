@@ -57,6 +57,7 @@ def parseNotebook(fileName):
         contentStr = contentStr.replace("""<?xml version="1.0" encoding="UTF-8" standalone="no"?>""", "")
         contentStr = contentStr.replace("""<!DOCTYPE en-note SYSTEM "http://xml.evernote.com/pub/enml2.dtd">""","")
         contentStr = contentStr.replace("&nbsp;", "")
+        contentStr = ''.join([i if ord(i) < 128 else '' for i in contentStr]) # remove non ascii
         contentTree = ET.fromstring(contentStr.strip())
         
         resourceListTree = noteTree.findall('resource')
